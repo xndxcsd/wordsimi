@@ -17,7 +17,7 @@ class VecDispatcher:
         self.__cur = self.__conn.cursor()
 
     def getVector(self, word):
-        sql = "SELECT * FROM vector WHERE f1 = '%s'" % word
+        sql = "SELECT * FROM vector_wiki WHERE f1 = '%s'" % word
         self.__cur.execute(sql)
 
         row = self.__cur.fetchone()

@@ -46,13 +46,14 @@ for i in range(nrows):  # 循环逐行打印
 
     vec1 = vecdispatcher.getVector(word1)
     if vec1 is None:  # 语料库中没有该词，则跳过该词
-        continue
+        cosine=str(0.0)
+    else:
+        vec2 = vecdispatcher.getVector(word2)
+        if vec2 is None:  # 语料库中没有该词，则跳过该词
+            cosine=str(0.0)
+        else:
+            cosine = computeCosine(vec1, vec2)
 
-    vec2 = vecdispatcher.getVector(word2)
-    if vec2 is None:  # 语料库中没有该词，则跳过该词
-        continue
-
-    cosine = computeCosine(vec1, vec2)
     if cosine is None:
         cosine = -1.0  # 鲁棒性考虑
     else:
